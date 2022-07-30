@@ -3,11 +3,17 @@ import { TodosContext } from '../../todo-context';
 import './todo-form.scss';
 
 export const TodoForm = () => {
-  const { todos, setTodos } = React.useContext(TodosContext);
+  const { setTodos } = React.useContext(TodosContext);
   const [task, setTask] = React.useState('');
 
   const handleAddTodo = () => {
     // Fin an ability to add new task
+    const obj = {
+      id: new Date(),
+      label: task,
+      checked: false,
+    };
+    setTodos((prevState) => [...prevState, obj]);
   };
 
   const handleKeyUp = (e) => {

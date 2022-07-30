@@ -8,10 +8,15 @@ export const TodoList = () => {
 
   const handleDelete = (id) => {
     // Fix an ability to delete task
+    setTodos((prev) => prev.filter((el) => el.id !== id));
   };
 
   const toggleCheck = (id) => {
     // Fix an ability to toggle task
+    const arr = [...todos];
+    const current = arr.find((el) => el.id === id);
+    current.checked = !current.checked;
+    setTodos(arr);
   };
 
   const handleKeyUp = (e, id) => {
